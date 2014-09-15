@@ -5,11 +5,11 @@ Securely store PHP session information on the client side using encrypted cookie
 
 Because there's a browser limit of around 4KB of data available for cookies, the session data is first compressed using the [deflate](http://en.wikipedia.org/wiki/DEFLATE) algorithm. You should also keep in mind that the session data stored in the client side cookie is sent back to the server with every request so it's important to keep the data as small as possible.
 
-By default, the class is configured to only set the data cookie over a secure HTTPS connection. This behaviour can be overridden by changing the `secureCookie` var to `false`.
+By default, the class is configured to only set the data cookie over a secure `HTTPS` connection. This behaviour can be overridden by changing the `secureCookie` static var to `false`.
 
 You can also customize the cookie specific settings (name, domain, path, etc.) using the `cookieName`, `cookiePath`, `cookieDomain` and `cookieHTTPOnly` static vars or you can customize the data compression level (for the deflate algorithm) using the `compressionLevel` static var (supported values from 0 to 9).
 
-To use the library in your code, simply include the <SecureClientSideSessionHandler.php> file and initialize the session handle with:
+To use the library in your code, simply include the <SecureClientSideSessionHandler.php> file and initialize the session handler with:
 
 ```php
 SecureClientSideSessionHandler::initialize('<your-encryption-key>', '<your-encryption-key-salt>');
@@ -21,5 +21,12 @@ If you want to enable the session data cookie over `HTTP` (disabled by default),
 
 ```php
 SecureClientSideSessionHandler::$cookieSecure = false;
+SecureClientSideSessionHandler::initialize('<your-encryption-key>', '<your-encryption-key-salt>');
+```
+
+The default cookie name for the session handler is `PHPSESSDATA`. You can customize the cookie name with:
+
+```php
+SecureClientSideSessionHandler::$cookieName = 'CUSTOM-COOKIE-NAME';
 SecureClientSideSessionHandler::initialize('<your-encryption-key>', '<your-encryption-key-salt>');
 ```
