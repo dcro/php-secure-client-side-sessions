@@ -1,0 +1,24 @@
+{
+    "name"       : "dcro/secure-client-side-session-handler",
+    "type"       : "library",
+    "description": "Securely store PHP session information on the client side using cookies (session data is encrypted & compressed)",
+    "keywords"   : ["session", "cookie", "secure", "client"],
+    "license"    : "GPL-2.0+",
+
+    "authors": [
+        {
+            "name"    : "Dan Cotora",
+            "email"   : "d@bluevision.ro",
+            "role"    : "Developer"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.3.0"
+    },
+
+    "autoload": {
+        "psr-0": { "SecureClientSideSessionHandler": "" }
+    }
+
+}
