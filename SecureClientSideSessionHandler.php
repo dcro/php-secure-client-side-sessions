@@ -117,6 +117,11 @@ class SecureClientSideSessionHandler implements SessionHandlerInterface
             throw new SecureClientSideSessionHandlerException('You must specify an encryption key salt');
         }
 
+        // Check if the mcrypt extension is available
+        if (!extension_loaded('mcrypt')) {
+            throw new SecureClientSideSessionHandlerException('The PHP mcrypt extension is not installed. This extension is required to be able to use the API.');
+        }
+
         // Set the encryption key & salt
         $this->encryptionKey     = $encryptionKey;
         $this->encryptionKeySalt = $encryptionKeySalt;
